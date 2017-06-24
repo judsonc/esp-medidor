@@ -11,8 +11,8 @@ float rms(double valorSensor, double dataInterval){
   // }
   // valueSensor = 0;
   // double potencia = (valueCurrent*220)*(dataInterval/3600000);
-  Serial.print(valorSensor);
+  // Serial.print(valorSensor);
   // Serial.print(dataInterval);
   // Serial.print(valueCurrent);
-  return 1.1;
+  return 10.2;
 }

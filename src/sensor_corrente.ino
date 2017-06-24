@@ -22,9 +22,10 @@
 //DEFINES AND FOWARDS DECLARATIONS
 //===================================================================================
 
-#define eventoEmit "estado"  //"/post/log/tomada/"
+#define eventoEmit "estado"
+#define postLog "/post/log/tomada/"
 // #define eventoOn "debug"
-#define timeToPost 20
+#define timeToPost 5
 void flagPost();
 String serial = "sensorCorrente";
 
