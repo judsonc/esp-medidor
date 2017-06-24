@@ -25,7 +25,7 @@
 #define eventoEmit "estado"  //"/post/log/tomada/"
 // #define eventoOn "debug"
 #define timeToPost 20
-// void flagPost();
+void flagPost();
 String serial = "sensorCorrente";
 
 //===================================================================================
@@ -43,22 +43,22 @@ SocketIoClient socket;
 HTTPClient http;
 String ipStr;
 String JSON;
-// Ticker sending;
+Ticker sending;
 
-// int pos = 0; //Posição
-// int pinSensor = A0; //Porta onde os sinais estão sendo enviados
-// int sensorValue_aux = 0; //Valor auxiliar do sensor
-// double valueSensor = 0; //Valor do sensor
-// float valueCurrent = 0; //Valor da corrente
-// float voltsperBit = 0.00329; // 3.3/1023 proporção de uma unidade do adc pelo aumento de tensão do sinal
-// float sensibility = 0.185; //mv/A proporção do sensor saída/entrada
-// int power = 220; //Tensão que o circuito é submetido
-// int nData; //Número de medições feitas
-// double start, theEnd; //Medições de tempo
+int pos = 0; //Posição
+int pinSensor = A0; //Porta onde os sinais estão sendo enviados
+int sensorValue_aux = 0; //Valor auxiliar do sensor
+double valueSensor = 0.0; //Valor do sensor
+float valueCurrent = 0.0; //Valor da corrente
+float voltsperBit = 0.00329; // 3.3/1023 proporção de uma unidade do adc pelo aumento de tensão do sinal
+float sensibility = 0.185; //mv/A proporção do sensor saída/entrada
+int power = 220; //Tensão que o circuito é submetido
+int nData; //Número de medições feitas
+double start, theEnd; //Medições de tempo
 
 char dateBuffer[30];
 int ano, mes, dia, hora, minuto, seg; //variáveis
-// bool stopGettingData = false; //flag para se parar de pegar dados
+bool stopGettingData = false; //flag para se parar de pegar dados
 String dataAtual; //String com a data atual
 
 // void event(const char * payload, size_t length) {
@@ -71,8 +71,8 @@ String dataAtual; //String com a data atual
 
 void setup() {
   Serial.begin(115200); //inicia o serial
-  // pinMode(pinSensor, INPUT_PULLUP); //seta a porta de leitura
-  // sending.attach(timeToPost, flagPost); //interrupção
+  pinMode(pinSensor, INPUT_PULLUP); //seta a porta de leitura
+  sending.attach(timeToPost, flagPost); //interrupção
   delay(10);
 
   WiFiManager wifis;
@@ -91,24 +91,23 @@ void setup() {
 
 void loop() {
   socket.loop();
-  // nData = 0;
-  // // while(nData < 1000){
-  // start = millis();
-  // while(!stopGettingData){
-  //   sensorValue_aux = analogRead(A0);
-  //   Serial.println(sensorValue_aux);
-  //   sensorValue_aux = map(sensorValue_aux, 1, 722, 1, 512);
-  //   sensorValue_aux -= 511; //METADE
-  //   valueSensor += sensorValue_aux * sensorValue_aux;
-  //   delay(10);
-  //   nData++;
-  // }
-  // theEnd = millis();
-  //
+  nData = 0;
+  // while(nData < 1000){
+  start = millis();
+  while(!stopGettingData){
+    sensorValue_aux = analogRead(A0);
+    // Serial.println(sensorValue_aux);
+    sensorValue_aux = map(sensorValue_aux, 1, 722, 1, 512);
+    sensorValue_aux -= 511; //METADE
+    valueSensor += sensorValue_aux * sensorValue_aux;
+    nData++;
+    delay(10);
+  }
+  theEnd = millis();
   // Serial.print("Valores quadráticos = "); Serial.println(valueSensor);
-  // double potencia = rms(valueSensor, theEnd-start);
+  double potencia = rms(valueSensor, (theEnd - start));
   // Serial.print("Valor rms = "); Serial.println(potencia);
   // Serial.print("nData = "); Serial.println(nData);
-  delay(3000);
-  postar();
+  // delay(3000);
+  postar(potencia);
 }
