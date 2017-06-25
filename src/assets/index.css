@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 320px;
+  font-family: sans-serif;
+  background-color: #e3e3e3;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.controle-xs {
+  margin: 0 auto;
+  width: 280px;
+}
+
+.input-xs {
+  display: inline-block;
+  margin: 0 5px;
+  top: 5px;
+}
+
+.datepicker > div {
+  top: -10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .input-xs {
+    width: 130px !important;
+  }
+  .input-xs > div {
+    width: 125px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .controle-sm {
+    width: 535px;
+  }
+}
