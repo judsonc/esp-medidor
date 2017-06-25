@@ -3,15 +3,17 @@ const style = {
     marginTop: 5,
     padding: 10,
   },
-  botaoControle: {
-    textAlign: 'right',
-  },
   h3: {
     fontSize:'1.5em',
     fontWeight: 'bold',
   },
   fontRed: {
     color:'red',
+  },
+  btnSearch: {
+  	position: 'absolute',
+  	right: 20,
+  	top: 122,
   },
 }
 

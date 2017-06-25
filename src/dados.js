@@ -7,6 +7,10 @@ const dados = {
     {
       uuid: "sensorCorrente1",
       nome: "tomada da geladeira",
+    },
+    {
+      uuid: "hidrometro_ect",
+      nome: "hidrometro ect",
     }
   ]
 }

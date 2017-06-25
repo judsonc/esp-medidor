@@ -13,25 +13,24 @@ body {
 
 .controle-xs {
   margin: 0 auto;
-  width: 280px;
+  width: 270px;
 }
 
 .input-xs {
   display: inline-block;
   margin: 0 5px;
-  top: 5px;
 }
 
 .datepicker > div {
-  top: -10px;
+  top: -15px;
 }
 
 @media only screen and (max-width: 767px) {
   .input-xs {
-    width: 130px !important;
+    width: 125px !important;
   }
   .input-xs > div {
-    width: 125px !important;
+    width: 120px !important;
   }
 }
 

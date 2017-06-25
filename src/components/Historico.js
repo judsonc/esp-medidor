@@ -74,7 +74,7 @@ class Historico extends React.Component {
 
   handleBuscar = () => {
     const msg = {
-      type: '/get/log/historico/',
+      type: '/history/get/filter/',
       data: {
         uuid_dispositivo: this.state.listaDispositivos[this.state.valorDispositivo].uuid,
         data_hora: moment(this.state.data).format('YYYY-MM-DD'),

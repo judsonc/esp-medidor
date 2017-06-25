@@ -1,10 +1,11 @@
 import React from 'react'
 import Paper from 'material-ui/Paper'
-import RaisedButton from 'material-ui/RaisedButton'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentSearch from 'material-ui/svg-icons/action/search'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import DatePicker from 'material-ui/DatePicker'
-import {paper, botaoControle} from '../assets/style'
+import {paper, btnSearch} from '../assets/style'
 
 class Controle extends React.Component {
   render() {
@@ -36,9 +37,9 @@ class Controle extends React.Component {
             {listaDispositivos}
           </SelectField>
         </div>
-        <div style={botaoControle}>
-          <RaisedButton onTouchTap={this.props.handleBuscar} primary={true} label="Buscar" />
-        </div>
+        <FloatingActionButton style={btnSearch} onTouchTap={this.props.handleBuscar}>
+          <ContentSearch />
+        </FloatingActionButton>
       </Paper>
     )
   }
