@@ -39,7 +39,7 @@ class App extends React.Component {
         <div>
           <AppBar
             showMenuIconButton={false}
-            title="Projeto SD"
+            title="LuminoSD"
           />
           <Container>
             <Row>

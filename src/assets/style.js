@@ -1,11 +1,13 @@
-const style = {
+module.exports = {
   paper: {
     marginTop: 5,
     padding: 10,
   },
   h3: {
-    fontSize:'1.5em',
+    fontSize: '1.2em',
     fontWeight: 'bold',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   fontRed: {
     color:'red',
@@ -13,8 +15,10 @@ const style = {
   btnSearch: {
   	position: 'absolute',
   	right: 20,
-  	top: 122,
+  	top: 107,
+  },
+  controle: {
+    margin: '0 auto',
+    width: 256,
   },
 }
-
-module.exports = style

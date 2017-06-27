@@ -21,13 +21,13 @@ class ModalAbertura extends React.Component {
 
     return (
       <Dialog
-        title="Gerencie seu consumo"
+        title="LuminoSD"
         actions={actions}
         modal={false}
         open={this.state.open}
         onRequestClose={this.handleClose}
       >
-        Escolha um dia para ver o comportamento do consumo energético variando no tempo naquele dispositivo escolhido.
+        Escolha um dispositivo para ver a luminosidade do ambiente monitorado em tempo real.
       </Dialog>
     )
   }
