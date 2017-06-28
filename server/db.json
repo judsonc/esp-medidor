@@ -1,0 +1,28 @@
+{
+  "devices": [
+    {
+      "nome": "Sala",
+      "valor": 0,
+      "contador": 1,
+      "acumulado": 0,
+      "media": 0,
+      "data_hora": "2017-06-27T23:02:44.250Z"
+    },
+    {
+      "nome": "Quarto",
+      "valor": 44,
+      "contador": 3,
+      "acumulado": 105,
+      "media": 35,
+      "data_hora": "2017-06-27T05:12:11.708Z"
+    },
+    {
+      "nome": "Escritório",
+      "valor": 95,
+      "contador": 1,
+      "acumulado": 93,
+      "media": 93,
+      "data_hora": "2017-06-26T05:12:11.708Z"
+    }
+  ]
+}

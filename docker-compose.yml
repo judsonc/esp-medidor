@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  node_sd:
+    container_name: node_sd
+    restart: always
+    build: ./server/
+    environment:
+      PORT: 3000
+    ports:
+      - 80:3000

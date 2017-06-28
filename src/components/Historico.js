@@ -1,10 +1,12 @@
 import React from 'react'
-import {Col} from 'react-grid-system'
+import { Col } from 'react-grid-system'
 import Controle from './Controle'
 import Info from './Info'
+import Grafico from './Grafico'
 import io from 'socket.io-client'
+import { Element, scroller } from 'react-scroll'
 
-const socket = io(`http://${location.hostname}:3001`)
+const socket = io(`http://${location.host}`)
 socket.on('connect', () => console.log('Conectado!'))
 
 class Historico extends React.Component {
@@ -25,7 +27,16 @@ class Historico extends React.Component {
 
   handleChangeDevices = (event, index) => this.setState({ selectedDevice: index })
 
-  handleSearch = () => socket.emit('/get/device/', { nome: this.state.devices[this.state.selectedDevice] })
+  handleSearch = () => {
+    socket.emit('/get/device/', { nome: this.state.devices[this.state.selectedDevice] })
+    setTimeout(() => {
+      document.getElementsByTagName('body')[0].style.background = 'linear-gradient(#282828, #000)'
+      scroller.scrollTo('grafico', {
+        duration: 700,
+        smooth: true,
+      })
+    }, 200)
+  }
 
   render() {
     return (
@@ -38,6 +49,9 @@ class Historico extends React.Component {
           selectedDevice={this.state.selectedDevice}
         />
         <Info data={this.state.infoDevice} />
+        <Element name="grafico">
+          <Grafico data={this.state.infoDevice} />
+        </Element>
       </Col>
     )
   }

@@ -3,19 +3,23 @@ module.exports = {
     marginTop: 5,
     padding: 10,
   },
-  h3: {
-    fontSize: '1.2em',
-    fontWeight: 'bold',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
+  noPadding: {
+    paddingLeft: 0,
+    paddingRight: 0,
   },
-  fontRed: {
-    color:'red',
+  paperWithMarginLeft: {
+    marginTop: 5,
+    padding: 10,
+    marginLeft: 5,
+  },
+  h3: {
+    fontSize: '1.1em',
+    fontWeight: 600,
   },
   btnSearch: {
   	position: 'absolute',
   	right: 20,
-  	top: 107,
+  	top: 106,
   },
   controle: {
     margin: '0 auto',

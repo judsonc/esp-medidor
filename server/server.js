@@ -1,6 +1,6 @@
 const low = require('lowdb')
 const fileAsync = require('lowdb/lib/storages/file-async')
-const db = low('../db.json', { storage: fileAsync })
+const db = low('./db.json', { storage: fileAsync })
 const express = require('express') // Módulo do Express para servidor de arquivos
 const app = express()
 const port = process.env.PORT || 3001
@@ -21,9 +21,10 @@ io.on('connection', (socket) => { // Função executada quando um novo usuário 
 
 const postLog = (body, socket) => {
   socket.join(body.nome)
+  let device = null
   const dados = db.get('devices').find({ nome: body.nome }).value()
   if (dados) {
-    const device = new Device(dados)
+    device = new Device(dados)
     device.addValor(body.valor)
     db.get('devices')
       .find({ nome: body.nome })
@@ -31,13 +32,14 @@ const postLog = (body, socket) => {
       .write()
       .then(res => (res.valor) ? sendOneDevice({ nome: res.nome }, socket.to(res.nome)) : null)
   } else {
-    const device = new Device()
+    device = new Device()
     device.set(body)
     db.get('devices')
       .push(device)
       .write()
       .then(res => (res.valor) ? sendOneDevice({ nome: res.nome }, socket.to(res.nome)) : null)
   }
+  console.log('postLog - ', device)
 }
 
 const sendOneDevice = (body, socket) => {
@@ -45,10 +47,10 @@ const sendOneDevice = (body, socket) => {
   leaveAllRooms(socket, body.nome)
   const device = db.get('devices').find(body).value()
   socket.emit('getOneDevice', device)
-  console.log('getOneDevice - ', device)
 }
 
-const sendAllNameDevices = (socket) => socket.emit('getAllNameDevices', db.get('devices').map('nome').value())
+const sendAllNameDevices = (socket) =>
+  socket.emit('getAllNameDevices', db.get('devices').map('nome').value())
 
 const leaveAllRooms = (socket, stayRoom) => {
   for (let room in socket.rooms) {

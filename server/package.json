@@ -1,10 +1,13 @@
 {
   "name": "server",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "",
-  "main": "server.js",
   "author": "Judson Costa",
   "license": "ISC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "express": "^4.15.3",
     "lowdb": "^0.16.2",
